@@ -1,9 +1,12 @@
+import com.gargoylesoftware.htmlunit.BrowserVersion;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.opera.OperaOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -15,8 +18,13 @@ public class FileUploadTest {
 
     @BeforeClass
     public void setupDriver(){
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        driver = new HtmlUnitDriver(BrowserVersion.FIREFOX);
+
+        //headless opera
+//        WebDriverManager.operadriver().setup();
+//        OperaOptions options = new OperaOptions();
+//        options.addArguments("headless");
+//        driver = new OperaDriver(options);
     }
 
     @Test
